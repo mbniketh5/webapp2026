@@ -1,0 +1,10 @@
+my-webapp/
+ ├── src/
+ │   └── main/
+ │       ├── java/
+ │       │   └── com/example/HelloServlet.java
+ │       └── webapp/
+ │           ├── index.jsp
+ │           └── WEB-INF/
+ │               └── web.xml
+ └── pom.xml
