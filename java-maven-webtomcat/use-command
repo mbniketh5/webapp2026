@@ -1,3 +1,7 @@
+sudo rm -rf /var/lib/tomcat10/webapps/KaptainBitesGift
+sudo rm -f /var/lib/tomcat10/webapps/KaptainBitesGift.war
+
+sudo cp /home/ubuntu/KaptainBitesGift/target/KaptainBitesGift.war /var/lib/tomcat10/webapps/
 
 
 -> sudo find / -name tomcat-users.xml
