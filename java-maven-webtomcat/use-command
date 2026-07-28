@@ -21,3 +21,56 @@ sudo cp /home/ubuntu/webapp2026/java-maven-webtomcat/target/my-webapp.war
 -->remove application
 sudo rm -rf /opt/tomcat/webapps/my-webapp*
 sudo cp target/my-webapp.war /opt/tomcat/webapps/
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+install mysql 
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+sudo mysql -u root -p
+ - inside mysql-
+    CREATE DATABASE kaptainbitesgift;
+USE kaptainbitesgift;
+
+CREATE TABLE customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    mobile VARCHAR(15),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    pincode VARCHAR(10),
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Add JDBC dependency in Maven
+In your pom.xml:
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.33</version>
+</dependency>
+..................
+RegisterServlet.java details
+try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/kaptainbitesgift", "root", "your_password");
+
+            PreparedStatement ps = con.prepareStatement(
+                "INSERT INTO customers(name,mobile,email,address,city,pincode) VALUES (?,?,?,?,?,?)");
+            ps.setString(1, name);
+            ps.setString(2, mobile);
+            ps.setString(3, email);
+            ps.setString(4, address);
+            ps.setString(5, city);
+            ps.setString(6, pincode);
+            ps.executeUpdate();
+
+mysql 
+mysql -u root -p
+USE kaptainbitesgift;
+SELECT * FROM customers;
+SELECT * FROM customers WHERE DATE(registered_at) = CURDATE();
+
