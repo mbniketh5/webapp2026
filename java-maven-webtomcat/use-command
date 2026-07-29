@@ -73,4 +73,7 @@ mysql -u root -p
 USE kaptainbitesgift;
 SELECT * FROM customers;
 SELECT * FROM customers WHERE DATE(registered_at) = CURDATE();
-
+delet-> DELETE FROM customers WHERE id = 3;
+entire delet-> DELETE FROM customers;
+.......................................
+disck apce clean ->
